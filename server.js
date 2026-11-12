@@ -193,4 +193,32 @@ app.patch("/api/admin/products/:id/availability", requireAdmin, (req, res) => {
   res.json({ ok: true });
 });
 
-app.listen(PORT, () => console.log(`SKY's Food running at http://localhost:${PORT}`));
+async function ensureAdminAccount() {
+  const email = String(process.env.ADMIN_EMAIL || '').trim().toLowerCase();
+  const password = String(process.env.ADMIN_PASSWORD || '');
+  const name = String(process.env.ADMIN_NAME || "SKY's Food Admin").trim();
+
+  if (!email || !password) {
+    console.warn('Admin account not configured. Set ADMIN_EMAIL and ADMIN_PASSWORD in the hosting environment.');
+    return;
+  }
+  if (password.length < 12) throw new Error('ADMIN_PASSWORD must be at least 12 characters long.');
+
+  const data = appData.read();
+  let admin = data.users.find(u => u.email === email);
+  const password_hash = await bcrypt.hash(password, 12);
+  if (admin) {
+    admin.name = name || "SKY's Food Admin";
+    admin.password_hash = password_hash;
+    admin.role = 'admin';
+  } else {
+    admin = { id: data.nextUserId++, name: name || "SKY's Food Admin", email, password_hash, role: 'admin', created_at: new Date().toISOString() };
+    data.users.push(admin);
+  }
+  appData.write(data);
+  console.log('Admin account is ready.');
+}
+
+ensureAdminAccount()
+  .then(() => app.listen(PORT, '0.0.0.0', () => console.log(`SKY's Food running on port ${PORT}`)))
+  .catch(error => { console.error('Admin setup failed:', error.message); process.exit(1); });
