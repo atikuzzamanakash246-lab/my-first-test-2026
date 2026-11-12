@@ -51,6 +51,9 @@ const appData = {
   write: saveData
 };
 
+// Render terminates HTTPS at its proxy; trust it so secure session cookies work.
+app.set("trust proxy", 1);
+
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: "100kb" }));
 app.use(session({
