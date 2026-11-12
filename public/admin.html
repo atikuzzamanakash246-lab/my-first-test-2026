@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111e">
+<title>SKY's Food | Admin Login</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+.admin-wrap{min-height:100vh;display:grid;place-items:center;padding:22px}
+.admin-card{width:min(100%,460px);background:#0b1929;border:1px solid #23435d;border-radius:24px;padding:clamp(25px,6vw,42px);box-shadow:0 25px 70px #0007}
+.admin-card h1{margin:12px 0 6px;font-size:30px}.admin-card p{line-height:1.6}
+.admin-card form{margin-top:25px}.admin-card label{display:block;color:#d8e9f6;font-size:13px;margin:15px 0}
+.admin-card input{display:block;width:100%;margin-top:7px;background:#061321;border:1px solid #29465e;border-radius:10px;padding:14px;color:white;outline:none}
+.admin-card input:focus{border-color:#38bdf8;box-shadow:0 0 0 3px #38bdf822}
+.admin-error{min-height:20px;color:#fca5a5;font-size:13px;margin:12px 0}
+.admin-back{display:inline-block;margin-top:20px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="admin-wrap">
+<section class="admin-card">
+<a class="brand" href="/">SKY'S <b>FOOD</b></a>
+<p class="eyebrow" style="margin-top:30px">SECURE STAFF ACCESS</p>
+<h1>Admin login</h1>
+<p class="muted">Sign in with the administrator email and password configured in Render.</p>
+<form id="adminLoginForm">
+<label>Admin email<input id="adminEmail" type="email" required autocomplete="username" placeholder="admin@example.com"></label>
+<label>Password<input id="adminPassword" type="password" required autocomplete="current-password" placeholder="Your admin password"></label>
+<button class="btn primary full" id="adminSubmit" type="submit">Sign in to dashboard</button>
+<p id="adminError" class="admin-error" role="alert"></p>
+</form>
+<a class="admin-back" href="/">← Back to SKY's Food</a>
+</section>
+</div>
+<script>
+const form=document.getElementById("adminLoginForm");
+form.addEventListener("submit",async event=>{
+ event.preventDefault();
+ const button=document.getElementById("adminSubmit");
+ const error=document.getElementById("adminError");
+ button.disabled=true;button.textContent="Signing in…";error.textContent="";
+ try{
+  const response=await fetch("/api/login",{method:"POST",credentials:"same-origin",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:document.getElementById("adminEmail").value,password:document.getElementById("adminPassword").value})});
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok)throw new Error(data.error||"Unable to sign in.");
+  if(data.user?.role!=="admin"){
+   await fetch("/api/logout",{method:"POST",credentials:"same-origin"});
+   throw new Error("This account does not have administrator access.");
+  }
+  window.location.href="/?admin=1";
+ }catch(err){error.textContent=err.message;button.disabled=false;button.textContent="Sign in to dashboard"}
+});
+</script>
+</body>
+</html>
