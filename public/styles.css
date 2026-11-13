@@ -52,3 +52,9 @@ body:has(#authView) .auth-panel a{color:#e9bd72}
  .lamp-floor-shadow{width:160px;bottom:0}
  body:has(#authView) .auth-panel{min-height:0;max-width:480px;justify-self:center;padding:26px 22px}
 }
+
+/* Use the uploaded lamp photo crop as the left-side login background. */
+body:has(#authView) .auth-art{background-image:linear-gradient(180deg,#171b1944,#171b1977),var(--lamp-photo,none);background-repeat:no-repeat;background-position:center;background-size:cover;border-radius:22px}
+body:has(#authView) .lamp-stage{display:none}
+body:has(#authView) .lamp-caption{padding:18px 22px;background:linear-gradient(90deg,#161b19bb,transparent);border-radius:14px}
+@media(max-width:700px){body:has(#authView) .auth-art{background-image:none;min-height:100px}.lamp-stage{display:block}}
