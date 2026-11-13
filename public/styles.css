@@ -79,3 +79,26 @@ body:has(#authView) .lamp-caption{background:linear-gradient(90deg,#171b19aa,tra
 @keyframes halo-flicker{0%,96%,100%{opacity:1}97%{opacity:.78}98%{opacity:.96}}
 @media(prefers-reduced-motion:reduce){body:has(#authView) .lamp-shade,body:has(#authView) .lamp-shade span,body:has(#authView) .lamp-bulb,body:has(#authView) .lamp-cord,body:has(#authView) .lamp-halo{animation:none}}
 @media(max-width:700px){body:has(#authView) .auth-art{background-image:none;min-height:155px}.lamp-stage{display:block}}
+
+
+/* Final login artwork: uploaded lamp photo + subtle animated golden light */
+body:has(#authView) .auth-art{
+  position:relative;isolation:isolate;overflow:hidden;
+  background-image:linear-gradient(90deg,#171b1933,#171b1966),var(--lamp-photo,none);
+  background-repeat:no-repeat;background-position:center;background-size:cover;
+  border-radius:22px;
+}
+body:has(#authView) .auth-art:before{
+  content:"";position:absolute;z-index:-1;left:18%;top:16%;width:64%;height:58%;
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(ellipse,#f4c56b55 0%,#d9a04a22 38%,transparent 72%);
+  filter:blur(18px);animation:photo-lamp-glow 3.8s ease-in-out infinite;
+}
+body:has(#authView) .lamp-stage{display:none}
+body:has(#authView) .lamp-caption{background:linear-gradient(90deg,#171b19b8,transparent);padding:18px 22px;border-radius:14px}
+@keyframes photo-lamp-glow{0%,100%{opacity:.55;transform:scale(.94)}50%{opacity:1;transform:scale(1.08)}}
+@media(max-width:700px){
+ body:has(#authView) .auth-art{background-image:none;min-height:100px}
+ body:has(#authView) .auth-art:before{display:none}
+ body:has(#authView) .lamp-stage{display:block}
+}
