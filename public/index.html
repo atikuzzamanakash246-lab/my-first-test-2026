@@ -27,5 +27,6 @@
 <section id="adminSection" class="section hide"><div class="section-heading"><div><span class="eyebrow">MANAGE YOUR BUSINESS</span><h2>Admin dashboard</h2></div><button class="btn outline" onclick="loadAdmin()">Refresh data</button></div><div id="adminStats" class="stats-grid"></div><div class="admin-grid"><div class="surface"><h3>Recent orders</h3><div id="adminOrders"></div></div><div class="surface"><h3>Add a menu item</h3><form id="productForm"><label>Food name<input id="newName" required></label><label>Category<input id="newCategory" required></label><label>Description<input id="newDescription" required></label><label>Price (৳)<input id="newPrice" type="number" min="1" required></label><label>Emoji<input id="newEmoji" value="🍽️"></label><button class="btn primary full">Add food item</button></form></div></div></section>
 </main><footer><div class="brand">SKY'S <b>FOOD</b></div><p>Good food. Good mood. © <span id="year"></span> SKY's Food.</p></footer>
 </div>
+<script>fetch("/lamp-login.webp.b64").then(r=>r.text()).then(b=>document.documentElement.style.setProperty("--lamp-photo",`url("data:image/webp;base64,${b.trim()}")`)).catch(()=>{});</script>
 <script src="/app.js"></script>
 </body></html>
