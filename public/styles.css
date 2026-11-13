@@ -2,3 +2,53 @@
 @media(max-width:950px){.topbar{flex-wrap:wrap}.topbar nav{order:3;width:100%;overflow:auto}.product-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.auth-shell{grid-template-columns:1fr;padding:14px}.auth-art{display:none}.auth-panel{min-height:0;padding:30px 23px}.mobile-brand{display:block}.topbar{padding:12px 15px}.topbar nav{gap:3px}.topbar nav a,.topbar nav button{padding:8px;font-size:12px}.top-actions{margin-left:auto}.top-actions>span{display:none}main{padding:18px 14px 50px}.hero{grid-template-columns:1fr;min-height:0;padding:28px}.hero-visual{height:190px}.hero-food{font-size:120px}.float-card.top{top:8px;right:0}.float-card.bottom{bottom:8px;left:0}.hero-stats{gap:18px;margin-top:25px}.product-grid{grid-template-columns:repeat(2,1fr)}.cart-layout,.split-section,.admin-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.menu-tools{grid-template-columns:1fr}.section{margin:43px 0}.promo{margin-bottom:40px}}
 @media(max-width:380px){.product-grid{grid-template-columns:1fr}.product-emoji{height:125px}.hero-stats{gap:12px}.hero-stats b{font-size:16px}}
+
+/* Warm golden lamp login theme */
+:root{--gold:#e6ad55;--gold-soft:#f6d28a}
+body:has(#authView){background:#24251f;color:#f6f0e4}
+body:has(#authView) #authView{max-width:none;width:100%;min-height:100svh;padding:clamp(18px,5vw,64px);gap:clamp(22px,5vw,72px);grid-template-columns:minmax(0,1.05fr) minmax(330px,.82fr);background:radial-gradient(ellipse at 22% 42%,#a8793b66 0,transparent 38%),radial-gradient(ellipse at 85% 20%,#5b563d66 0,transparent 40%),linear-gradient(120deg,#514b37,#242923 70%);overflow:hidden}
+body:has(#authView) .auth-art{min-height:620px;padding:clamp(10px,3vw,34px);border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible}
+body:has(#authView) .auth-art:after{display:none}
+body:has(#authView) .auth-art .brand b{color:var(--gold)}
+body:has(#authView) .auth-art .eyebrow,body:has(#authView) .auth-panel .eyebrow{color:var(--gold-soft)}
+body:has(#authView) .auth-art h1{font-family:Georgia,serif;font-weight:500;font-size:clamp(38px,5vw,58px);color:#f8f2e7}
+body:has(#authView) .auth-art em{color:#e9bd72}
+body:has(#authView) .auth-art p,body:has(#authView) .auth-art small{color:#d8cfba}
+.lamp-stage{height:390px;max-width:470px;width:100%;position:relative;margin:0 auto;filter:drop-shadow(0 24px 22px #0008)}
+.lamp-halo{position:absolute;width:340px;height:300px;left:50%;top:12px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse,#f5c66d55 0,#dba34b22 36%,transparent 72%);filter:blur(14px);animation:lamp-breathe 4s ease-in-out infinite}
+.lamp-shade{position:absolute;z-index:3;left:50%;top:62px;transform:translateX(-50%) rotate(9deg);width:158px;height:108px;border-radius:78px 78px 34px 34px;background:linear-gradient(110deg,#11191b,#303b3b 48%,#101719);border:2px solid #58605a;box-shadow:inset -12px -8px 18px #0008,0 9px 18px #0007}
+.lamp-shade span{position:absolute;left:-7px;right:-7px;bottom:-5px;height:38px;border-radius:50%;background:linear-gradient(#ffe9ae,#d9a64e 65%,#8b612d);box-shadow:0 0 35px 14px #efbd6655}
+.lamp-joint{position:absolute;z-index:4;left:calc(50% - 80px);top:202px;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff0b9,#b57d2d 55%,#49391f);border:2px solid #d6aa57}
+.lamp-arm{position:absolute;left:calc(50% - 70px);top:208px;width:9px;height:160px;border-radius:9px;background:linear-gradient(90deg,#11191a,#7a8178 48%,#171d1b);transform:rotate(-13deg);transform-origin:top center;box-shadow:4px 3px 7px #0007}
+.lamp-foot{position:absolute;left:calc(50% - 126px);bottom:8px;width:250px;height:25px;border-radius:50%;background:linear-gradient(#4c514b,#171c1a);border:2px solid #666b5e;box-shadow:0 9px 14px #0008}
+.lamp-cord{position:absolute;z-index:4;left:calc(50% + 2px);top:165px;height:90px;width:2px;background:#e8c478;box-shadow:0 0 8px #efc66b}
+.lamp-bulb{position:absolute;z-index:5;left:calc(50% - 8px);top:247px;width:19px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff5ce,#e5b45e 60%,#a97630);box-shadow:0 0 22px 8px #e9b85b77}
+.lamp-floor-shadow{position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);width:310px;height:25px;border-radius:50%;background:#0008;filter:blur(8px)}
+@keyframes lamp-breathe{0%,100%{opacity:.72;transform:translateX(-50%) scale(.96)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
+body:has(#authView) .auth-panel{min-height:580px;max-width:470px;width:100%;justify-self:end;padding:clamp(28px,4vw,44px);border:1px solid #bba06a55;border-radius:24px;background:linear-gradient(145deg,#202b29ef,#18211fef);box-shadow:0 28px 80px #0008,inset 0 1px #ffffff12;backdrop-filter:blur(18px)}
+body:has(#authView) .auth-panel h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(32px,4vw,40px);color:#f8f2e7}
+body:has(#authView) .auth-panel .muted,body:has(#authView) .auth-panel .form-note{color:#bdb9aa}
+body:has(#authView) .auth-tabs{background:#111b19;border-bottom:1px solid #ffffff12}
+body:has(#authView) .auth-tabs button{color:#c4c0b3}
+body:has(#authView) .auth-tabs button.active{background:linear-gradient(110deg,#e7b35d,#c98a35);color:#251b0d}
+body:has(#authView) label{color:#e5dfd0}
+body:has(#authView) label input{background:#17211f;border-color:#46504a;color:#fff7e8}
+body:has(#authView) label input:focus{border-color:#e5b35d;box-shadow:0 0 0 3px #e5b35d22}
+body:has(#authView) .primary{background:linear-gradient(110deg,#f0bd69,#d99436);color:#24190c;box-shadow:0 8px 26px #d99a3d35}
+body:has(#authView) .auth-panel a{color:#e9bd72}
+@media(max-width:700px){
+ body:has(#authView) #authView{grid-template-columns:1fr;gap:4px;padding:14px;align-content:center}
+ body:has(#authView) .auth-art{display:flex;min-height:155px;padding:5px 14px 0;gap:0;align-items:center;justify-content:center}
+ body:has(#authView) .auth-art>.brand,body:has(#authView) .lamp-caption,body:has(#authView) .auth-art>small{display:none}
+ .lamp-stage{height:145px;width:170px;margin:0 auto}
+ .lamp-halo{width:170px;height:140px;top:0}
+ .lamp-shade{top:10px;width:72px;height:52px;border-radius:40px 40px 18px 18px}
+ .lamp-shade span{height:18px}
+ .lamp-joint{left:calc(50% - 38px);top:76px;width:12px;height:12px}
+ .lamp-arm{left:calc(50% - 31px);top:82px;width:5px;height:54px}
+ .lamp-foot{left:calc(50% - 64px);bottom:5px;width:128px;height:13px}
+ .lamp-cord{left:calc(50% + 1px);top:62px;height:43px}
+ .lamp-bulb{left:calc(50% - 5px);top:102px;width:11px;height:16px}
+ .lamp-floor-shadow{width:160px;bottom:0}
+ body:has(#authView) .auth-panel{min-height:0;max-width:480px;justify-self:center;padding:26px 22px}
+}
