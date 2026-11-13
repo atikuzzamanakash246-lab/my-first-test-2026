@@ -58,3 +58,24 @@ body:has(#authView) .auth-art{background-image:linear-gradient(180deg,#171b1944,
 body:has(#authView) .lamp-stage{display:none}
 body:has(#authView) .lamp-caption{padding:18px 22px;background:linear-gradient(90deg,#161b19bb,transparent);border-radius:14px}
 @media(max-width:700px){body:has(#authView) .auth-art{background-image:none;min-height:100px}.lamp-stage{display:block}}
+
+
+/* Animated warm desk lamp login scene */
+body:has(#authView) .auth-art{
+  background-image:radial-gradient(ellipse at 52% 42%,#b98a4b55,transparent 54%),linear-gradient(145deg,#514b37,#292d27 72%,#1d2522);
+  background-repeat:no-repeat;background-size:cover;border-radius:22px;
+}
+body:has(#authView) .lamp-stage{display:block}
+body:has(#authView) .lamp-shade{animation:lamp-nod 6s ease-in-out infinite;transform-origin:50% 88%}
+body:has(#authView) .lamp-shade span{animation:shade-glow 3.5s ease-in-out infinite}
+body:has(#authView) .lamp-bulb{animation:bulb-pulse 3.5s ease-in-out infinite}
+body:has(#authView) .lamp-cord{transform-origin:top center;animation:cord-sway 4s ease-in-out infinite}
+body:has(#authView) .lamp-halo{animation:lamp-breathe 3.5s ease-in-out infinite,halo-flicker 8s linear infinite}
+body:has(#authView) .lamp-caption{background:linear-gradient(90deg,#171b19aa,transparent)}
+@keyframes lamp-nod{0%,100%{transform:translateX(-50%) rotate(9deg)}50%{transform:translateX(-50%) rotate(7deg)}}
+@keyframes shade-glow{0%,100%{box-shadow:0 0 30px 12px #efbd6644;filter:brightness(.95)}50%{box-shadow:0 0 48px 22px #efbd6688;filter:brightness(1.16)}}
+@keyframes bulb-pulse{0%,100%{box-shadow:0 0 18px 6px #e9b85b66;filter:brightness(.95)}50%{box-shadow:0 0 32px 13px #f3c66fbb;filter:brightness(1.25)}}
+@keyframes cord-sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+@keyframes halo-flicker{0%,96%,100%{opacity:1}97%{opacity:.78}98%{opacity:.96}}
+@media(prefers-reduced-motion:reduce){body:has(#authView) .lamp-shade,body:has(#authView) .lamp-shade span,body:has(#authView) .lamp-bulb,body:has(#authView) .lamp-cord,body:has(#authView) .lamp-halo{animation:none}}
+@media(max-width:700px){body:has(#authView) .auth-art{background-image:none;min-height:155px}.lamp-stage{display:block}}
